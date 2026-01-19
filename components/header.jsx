@@ -108,7 +108,7 @@ export default function Header() {
               alt="Ana Cris Ormaza"
               width={isScrolled && !isOpen ? 140 : 220}
               height={isScrolled && !isOpen ? 56 : 88}
-              className={`transition-all duration-500 ${isOpen || !isScrolled ? "brightness-0 invert" : ""}`}
+              className={`transition-all duration-500 ${isOpen || !isScrolled ? "brightness-0 invert opacity-0" : ""}`}
               priority
             />
           </a>

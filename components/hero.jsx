@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -12,6 +12,15 @@ export default function Hero() {
   const imageRef = useRef(null);
   const leftTextRef = useRef(null);
   const rightTextRef = useRef(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,7 +34,7 @@ export default function Hero() {
           duration: 1,
           ease: "power3.out",
           delay: 0.5,
-        }
+        },
       );
 
       // Animate right text lines - simple fade in with stagger
@@ -40,7 +49,7 @@ export default function Hero() {
           stagger: 0.08,
           ease: "power3.out",
           delay: 0.7,
-        }
+        },
       );
 
       // Parallax on image
@@ -70,7 +79,7 @@ export default function Hero() {
             end: "50% top",
             scrub: true,
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -86,7 +95,7 @@ export default function Hero() {
             end: "50% top",
             scrub: true,
           },
-        }
+        },
       );
     }, heroRef);
 
@@ -112,6 +121,18 @@ export default function Hero() {
 
       {/* Content Container */}
       <div className="relative z-10 h-full flex items-center">
+        {/* centered logo on scroll */}
+        <div className="absolute top-14 left-1/2 -translate-x-1/2">
+          <Image
+            src="/images/logo.png"
+            alt="Ana Cris Ormaza"
+            width={isScrolled ? 140 : 300}
+            height={isScrolled ? 56 : 168}
+            className={`transition-all duration-500 ${!isScrolled ? "brightness-0 invert" : "opacity-0"}`}
+            priority
+          />
+        </div>
+
         {/* Left Text - "BECOME the woman" */}
         <div
           ref={leftTextRef}
@@ -132,8 +153,10 @@ export default function Hero() {
           ref={rightTextRef}
           className="absolute right-6 md:right-12 lg:right-1/8 top-1/2 -translate-y-1/2 text-left"
         >
-          <div className="font-serif font-light tracking-[0.1em] text-white md:text-[#9A7B6D] leading-[1.1] 
-           text-2xl md:text-4xl lg:text-[4vw]">
+          <div
+            className="font-serif font-light tracking-[0.1em] text-white md:text-[#9A7B6D] leading-[1.1] 
+           text-2xl md:text-4xl lg:text-[4vw]"
+          >
             <div className="right-line">YOU</div>
             <div className="right-line">ARE</div>
             <div className="right-line">MEANT</div>
