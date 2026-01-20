@@ -6,13 +6,13 @@ import Products from "@/components/products"
 import Gallery from "@/components/gallery"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
-import SmoothScroll from "@/components/smooth-scroll"
+// import SmoothScroll from "@/components/smooth-scroll"
 
 export default function Home() {
   return (
     <>
       <Header />
-      <SmoothScroll>
+      {/* <SmoothScroll> */}
         <main className="grain">
           <Hero />
           <About />
@@ -22,7 +22,7 @@ export default function Home() {
           <Contact />
           <Footer />
         </main>
-      </SmoothScroll>
+      {/* </SmoothScroll> */}
     </>
   )
 }
