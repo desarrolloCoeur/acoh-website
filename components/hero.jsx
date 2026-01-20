@@ -195,7 +195,7 @@ export default function Hero() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="hidden md:inline absolute bottom-8 left-1/2 -translate-x-1/2">
           <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-[#785D53]/50 flex items-center justify-center">
             <svg
               className="w-4 h-4 text-[#785D53]/70"
