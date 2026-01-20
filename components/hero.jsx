@@ -181,11 +181,11 @@ export default function Hero() {
 
         <div
           ref={rightTextRef}
-          className="absolute display md:hidden left-1/2 -translate-x-1/2 text-center"
+          className="absolute display top-2/3 md:hidden left-1/2 -translate-x-1/2 text-center"
         >
           <div
             className="font-serif font-light tracking-[0.1em] text-white leading-[1.1] 
-           text-6xl"
+           text-5xl"
           >
             <div className="right-line">YOU</div>
             <div className="right-line">ARE</div>
