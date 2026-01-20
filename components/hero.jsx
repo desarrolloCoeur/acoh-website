@@ -114,7 +114,7 @@ export default function Hero() {
           src="/images/imagev2.jpeg"
           alt="Ana Cris Ormaza"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center brightness-75 md:brightness-100"
           priority
         />
       </div>
@@ -136,13 +136,28 @@ export default function Hero() {
         {/* Left Text - "BECOME the woman" */}
         <div
           ref={leftTextRef}
-          className="absolute left-6 md:left-12 lg:left-1/6 top-1/2 -translate-y-1/2"
+          className="absolute hidden md:inline md:translate-x-0 md:left-12 lg:left-1/6 top-1/4 md:top-1/2 -translate-y-1/2"
         >
           <div className="flex items-baseline gap-3 md:gap-4">
-            <span className="text-md lg:text-4xl tracking-[0.3em] uppercase text-white md:text-[#785D53] font-sans">
+            <span className="text-md lg:text-4xl tracking-[0.3em] uppercase text-[#785D53] font-sans">
               BECOME
             </span>
             <span className="text-lg md:text-xl lg:text-2xl italic text-white font-serif">
+              the woman
+            </span>
+          </div>
+        </div>
+        {/* mobile */}
+        <div
+          ref={leftTextRef}
+          className="absolute inline md:hidden left-1/2 -translate-x-1/2 top-1/4 -translate-y-1/2"
+        >
+          <div className=" items-baseline gap-3 md:gap-4">
+            <span className="text-lg tracking-[0.3em] uppercase text-white font-sans">
+              BECOME
+            </span>
+            <br />
+            <span className="text-xl  italic text-white font-serif">
               the woman
             </span>
           </div>
@@ -151,11 +166,26 @@ export default function Hero() {
         {/* Right Text - "YOU ARE MEANT TO BE" */}
         <div
           ref={rightTextRef}
-          className="absolute right-6 md:right-12 lg:right-1/8 top-1/2 -translate-y-1/2 text-left"
+          className="absolute hidden md:inline md:translate-x-0 md:right-12 lg:right-1/8 top-1/2 -translate-y-1/2 text-center md:text-left"
         >
           <div
-            className="font-serif font-light tracking-[0.1em] text-white md:text-[#9A7B6D] leading-[1.1] 
-           text-2xl md:text-4xl lg:text-[4vw]"
+            className="font-serif font-light tracking-[0.1em] text-[#9A7B6D] leading-[1.1] 
+           text-4xl md:text-4xl lg:text-[4vw]"
+          >
+            <div className="right-line">YOU</div>
+            <div className="right-line">ARE</div>
+            <div className="right-line">MEANT</div>
+            <div className="right-line">TO BE</div>
+          </div>
+        </div>
+
+        <div
+          ref={rightTextRef}
+          className="absolute display md:hidden left-1/2 -translate-x-1/2 text-center"
+        >
+          <div
+            className="font-serif font-light tracking-[0.1em] text-white leading-[1.1] 
+           text-6xl"
           >
             <div className="right-line">YOU</div>
             <div className="right-line">ARE</div>
