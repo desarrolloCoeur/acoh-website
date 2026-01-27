@@ -1,63 +1,69 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { gsap } from "gsap"
-import Image from "next/image"
-import { getSmoother } from "./smooth-scroll"
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import Image from "next/image";
+import { getSmoother } from "./smooth-scroll";
 
 export default function Header() {
-  const headerRef = useRef(null)
-  const menuRef = useRef(null)
-  const menuItemsRef = useRef([])
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const menuItemsRef = useRef([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   useEffect(() => {
-    if (!menuRef.current) return
+    if (!menuRef.current) return;
 
     if (isOpen) {
       gsap.to(menuRef.current, {
         clipPath: "circle(150% at calc(100% - 40px) 40px)",
         duration: 0.8,
         ease: "power4.inOut",
-      })
+      });
 
       menuItemsRef.current.forEach((item, i) => {
         if (item) {
           gsap.fromTo(
             item,
             { y: 80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.6, delay: 0.3 + i * 0.1, ease: "power3.out" },
-          )
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              delay: 0.3 + i * 0.1,
+              ease: "power3.out",
+            },
+          );
         }
-      })
+      });
     } else {
       gsap.to(menuRef.current, {
         clipPath: "circle(0% at calc(100% - 40px) 40px)",
         duration: 0.6,
         ease: "power4.inOut",
-      })
+      });
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   const navItems = [
     { label: "Inicio", href: "#inicio" },
@@ -66,27 +72,27 @@ export default function Header() {
     { label: "Productos", href: "#productos" },
     { label: "Galería", href: "#galeria" },
     { label: "Contacto", href: "#contacto" },
-  ]
+  ];
 
   const handleNavClick = (e, href) => {
-    e.preventDefault()
-    setIsOpen(false)
+    e.preventDefault();
+    setIsOpen(false);
 
     setTimeout(() => {
-      const smoother = getSmoother()
+      const smoother = getSmoother();
       if (smoother) {
-        smoother.scrollTo(href, true, "top top")
+        smoother.scrollTo(href, true, "top top");
       } else {
-        const el = document.querySelector(href)
+        const el = document.querySelector(href);
         if (el) {
           window.scrollTo({
             top: el.offsetTop,
             behavior: "smooth",
-          })
+          });
         }
       }
-    }, 600)
-  }
+    }, 600);
+  };
 
   return (
     <>
@@ -102,7 +108,11 @@ export default function Header() {
       >
         <div className="w-[90%] md:w-[95%] mx-auto flex items-center justify-between">
           {/* Logo */}
-          <a href="#inicio" onClick={(e) => handleNavClick(e, "#inicio")} className="relative z-[60]">
+          <a
+            href="#inicio"
+            onClick={(e) => handleNavClick(e, "#inicio")}
+            className="relative z-[60]"
+          >
             <Image
               src="/images/logo.png"
               alt="Ana Cris Ormaza"
@@ -163,7 +173,7 @@ export default function Header() {
             <li
               key={item.label}
               ref={(el) => {
-                menuItemsRef.current[index] = el
+                menuItemsRef.current[index] = el;
               }}
               className="overflow-hidden"
               style={{ opacity: 0 }}
@@ -171,7 +181,7 @@ export default function Header() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="group relative block text-4xl md:text-5xl lg:text-7xl font-serif text-white uppercase tracking-tight overflow-hidden"
+                className="group relative block text-4xl lg:text-5xl font-serif text-white uppercase tracking-tight overflow-hidden"
                 style={{ lineHeight: 1.1, height: "1.1em" }}
               >
                 <span
@@ -194,7 +204,9 @@ export default function Header() {
 
         {/* Menu footer */}
         <div className="absolute bottom-8 md:bottom-12 left-0 right-0 w-[90%] md:w-[95%] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-white/60 text-sm md:text-base">
-          <span className="tracking-widest uppercase font-sans text-base md:text-lg">Selfcare & Motherhood</span>
+          <span className="tracking-widest uppercase font-sans text-base md:text-lg">
+            Selfcare & Motherhood
+          </span>
           <div className="flex gap-8 font-sans text-sm md:text-base">
             <a href="#" className="hover:text-white transition-colors">
               Instagram
@@ -213,5 +225,5 @@ export default function Header() {
         </div>
       </nav>
     </>
-  )
+  );
 }

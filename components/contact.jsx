@@ -1,16 +1,20 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
-  const sectionRef = useRef(null)
-  const headerRef = useRef(null)
-  const formRef = useRef(null)
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const formRef = useRef(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -27,9 +31,9 @@ export default function Contact() {
             start: "top 80%",
           },
         },
-      )
+      );
 
-      const formElements = formRef.current.querySelectorAll(".form-field")
+      const formElements = formRef.current.querySelectorAll(".form-field");
       gsap.fromTo(
         formElements,
         { opacity: 0, y: 60, rotateX: -15 },
@@ -45,39 +49,53 @@ export default function Contact() {
             start: "top 75%",
           },
         },
-      )
-    }, sectionRef)
+      );
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
-  }
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
-    <section ref={sectionRef} id="contacto" className="py-24 md:py-40 relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="contacto"
+      className="py-24 md:py-40 relative overflow-hidden"
+    >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <span className="text-[30vw] font-sans font-light text-primary/5 whitespace-nowrap">HOLA</span>
+        <span className="text-[30vw] font-sans font-light text-primary/5 whitespace-nowrap">
+          HOLA
+        </span>
       </div>
 
       <div className="w-[90%] md:w-[85%] max-w-5xl mx-auto relative z-10">
         <div ref={headerRef} className="mb-16 md:mb-24">
-          <span className="block text-md tracking-[0.5em] uppercase text-secondary mb-8 font-sans">Contacto</span>
+          <span className="block text-lg tracking-[0.5em] uppercase text-foreground mb-8 font-sans">
+            Contacto
+          </span>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-light leading-tight">
               ¿Lista para <em className="font-serif">empezar?</em>
             </h2>
             <div className="flex flex-col justify-end">
               <p className="font-serif text-foreground/60 text-xl md:text-2xl leading-relaxed">
-                Si este espacio resuena contigo, déjanos tu mensaje y te responderemos con calma y claridad.
+                Si este espacio resuena contigo, déjanos tu mensaje y te
+                responderemos con calma y claridad.
               </p>
             </div>
           </div>
         </div>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-0" style={{ perspective: "1000px" }}>
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="space-y-0"
+          style={{ perspective: "1000px" }}
+        >
           <div className="grid lg:grid-cols-2 border-t border-border">
             <div className="form-field p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-border">
               <label className="block text-sm tracking-[0.4em] uppercase text-foreground/40 mb-4 font-sans">
@@ -86,7 +104,9 @@ export default function Contact() {
               <input
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full bg-transparent font-serif text-2xl md:text-3xl focus:outline-none placeholder:text-foreground/20"
                 placeholder="Tu nombre"
                 required
@@ -99,7 +119,9 @@ export default function Contact() {
               <input
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full bg-transparent font-serif text-2xl md:text-3xl focus:outline-none placeholder:text-foreground/20"
                 placeholder="tu@email.com"
                 required
@@ -113,7 +135,9 @@ export default function Contact() {
             </label>
             <textarea
               value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
               rows={3}
               className="w-full bg-transparent font-serif text-2xl md:text-3xl focus:outline-none resize-none placeholder:text-foreground/20"
               placeholder="¿En qué podemos ayudarte?"
@@ -140,5 +164,5 @@ export default function Contact() {
         </form>
       </div>
     </section>
-  )
+  );
 }

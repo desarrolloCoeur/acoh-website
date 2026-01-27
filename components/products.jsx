@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Products() {
-  const sectionRef = useRef(null)
-  const headerRef = useRef(null)
-  const productsRef = useRef([])
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const productsRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -27,7 +27,7 @@ export default function Products() {
             start: "top 80%",
           },
         },
-      )
+      );
 
       productsRef.current.forEach((product, i) => {
         if (product) {
@@ -50,22 +50,22 @@ export default function Products() {
                 start: "top 85%",
               },
             },
-          )
+          );
         }
-      })
-    }, sectionRef)
+      });
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   const products = [
     {
       num: "01",
-      title: "Agenda Personal y Flexible",
-      desc: "El sistema base para mujeres que quieren energía, enfoque y tiempo real.",
+      title: "Organiza tu Día a Día",
+      desc: "Mi sistema por bloques para ordenar tus días sin olvidarte de ti.",
       price: "37 USD",
       originalPrice: "57 USD",
-      cta: "Quiero organizar mi vida",
+      cta: "Quiero organizar mis días",
       available: true,
       featured: true,
     },
@@ -91,17 +91,19 @@ export default function Products() {
       available: false,
       premium: true,
     },
-  ]
+  ];
 
   return (
     <section ref={sectionRef} id="productos" className="py-24 md:py-40">
       <div className="w-[90%] md:w-[85%] max-w-7xl mx-auto">
         <div ref={headerRef} className="mb-20 md:mb-32">
-          <span className="block text-md tracking-[0.5em] uppercase text-secondary mb-8 font-sans">
+          <span className="block text-lg tracking-[0.5em] uppercase text-foreground mb-8 font-sans">
             Productos & Servicios
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light">Agenda · Energía · Propósito</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light">
+              Día a Día • Finanzas • Propósito
+            </h2>
             <p className="text-xl md:text-2xl font-serif italic text-foreground/60 max-w-md">
               "Eres la misma, en una versión más alineada contigo."
             </p>
@@ -137,7 +139,9 @@ export default function Products() {
                       {product.num}
                     </span>
                     <div>
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-sans font-light mb-4">{product.title}</h3>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-sans font-light mb-4">
+                        {product.title}
+                      </h3>
                       <p
                         className={`font-serif text-lg md:text-xl leading-relaxed max-w-lg ${
                           product.featured
@@ -156,11 +160,15 @@ export default function Products() {
                   <div className="flex flex-col items-start lg:items-end gap-4 lg:pl-8">
                     {product.price && (
                       <div className="flex items-baseline gap-4">
-                        <span className="text-4xl md:text-5xl font-sans font-light">{product.price}</span>
+                        <span className="text-4xl md:text-5xl font-sans font-light">
+                          {product.price}
+                        </span>
                         {product.originalPrice && (
                           <span
                             className={`text-lg font-serif line-through ${
-                              product.featured ? "text-primary-foreground/40" : "text-foreground/40"
+                              product.featured
+                                ? "text-primary-foreground/40"
+                                : "text-foreground/40"
                             }`}
                           >
                             {product.originalPrice}
@@ -189,7 +197,11 @@ export default function Products() {
               {/* Hover line */}
               <div
                 className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-700 ${
-                  product.featured ? "bg-background" : product.premium ? "bg-secondary" : "bg-primary"
+                  product.featured
+                    ? "bg-background"
+                    : product.premium
+                      ? "bg-secondary"
+                      : "bg-primary"
                 }`}
               />
             </div>
@@ -197,5 +209,5 @@ export default function Products() {
         </div>
       </div>
     </section>
-  )
+  );
 }
