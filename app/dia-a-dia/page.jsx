@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import DiaHeader from "@/components/dia-a-dia/dia-header";
 import SmoothScroll from "@/components/smooth-scroll";
 import DiaHero from "@/components/dia-a-dia/dia-hero";
 import DiaDescription from "@/components/dia-a-dia/dia-description";
@@ -10,7 +10,7 @@ import Footer from "@/components/footer";
 export default function DiaADiaPage() {
   return (
     <>
-      <Header />
+      <DiaHeader />
       <SmoothScroll>
         <main className="grain">
           <DiaHero />

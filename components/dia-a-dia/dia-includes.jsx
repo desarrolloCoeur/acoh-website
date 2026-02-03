@@ -113,7 +113,7 @@ export default function DiaIncludes() {
           {includes.map((item, index) => (
             <div
               key={index}
-              className="include-item py-10 md:py-14 px-0 md:px-8 border-b border-[#F5F0EB]/10 group cursor-default"
+              className="include-item opacity-0 py-10 md:py-14 px-0 md:px-8 border-b border-[#F5F0EB]/10 group cursor-default"
             >
               <div className="flex items-start gap-6">
                 <span

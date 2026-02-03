@@ -66,6 +66,7 @@ export default function Products() {
       price: "37 USD",
       originalPrice: "57 USD",
       cta: "Quiero organizar mis días",
+      href: "/dia-a-dia",
       available: true,
       featured: true,
     },
@@ -176,7 +177,8 @@ export default function Products() {
                         )}
                       </div>
                     )}
-                    <button
+                    <a
+                      href={product.href}
                       className={`px-8 py-4 text-sm tracking-[0.3em] uppercase font-sans transition-all duration-500 ${
                         product.available
                           ? product.featured
@@ -189,7 +191,7 @@ export default function Products() {
                       disabled={!product.available}
                     >
                       {product.cta}
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

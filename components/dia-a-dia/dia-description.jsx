@@ -161,7 +161,7 @@ export default function DiaDescription() {
               {results.map((item, index) => (
                 <div
                   key={index}
-                  className="result-item flex items-center gap-4 py-3 border-b border-[#F5F0EB]/20"
+                  className="result-item opacity-0 flex items-center gap-4 py-3 border-b border-[#F5F0EB]/20"
                 >
                   <span className="text-sm opacity-40">0{index + 1}</span>
                   <span className="text-base md:text-lg">{item}</span>
