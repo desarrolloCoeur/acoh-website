@@ -13,6 +13,7 @@ export default function DiaHero() {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const decorRef = useRef(null);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,6 +39,21 @@ export default function DiaHero() {
           y: 0,
           duration: 1,
           ease: "power3.out",
+        },
+      );
+      //ctaRef
+      gsap.fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ctaRef.current,
+            start: "top 85%",
+          },
         },
       );
 
@@ -144,21 +160,18 @@ export default function DiaHero() {
           </h1>
 
           {/* Subtitle */}
-          <p
-            ref={subtitleRef}
-            className="mt-8 md:mt-12 max-w-xl text-lg md:text-xl lg:text-2xl text-background/90 leading-relaxed font-light"
-          >
-            Sistema por bloques para organizar tu vida sin olvidarte de ti
-          </p>
+          <div ref={ctaRef} className="mt-12">
+            <a
+              href="#"
+              className="inline-flex bg-background py-4 px-5 text-foreground items-center gap-4 group"
+            >
+              <span className="text-sm uppercase tracking-[0.2em]">
+                Comprar Producto
+              </span>
+              <span className="w-12 h-[1px] bg-foreground/50 group-hover:w-20 transition-all duration-300" />
+            </a>
+          </div>
         </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 lg:px-20 py-6 flex justify-between items-center border-t border-primary/10">
-        <span className="text-sm text-primary/50 tracking-[0.2em] uppercase">
-          Scroll
-        </span>
-        <span className="text-sm text-primary/50">MMXXVI</span>
       </div>
     </section>
   );

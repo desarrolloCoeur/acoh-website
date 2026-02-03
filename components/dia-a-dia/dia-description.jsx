@@ -176,7 +176,7 @@ export default function DiaDescription() {
               className="inline-flex bg-background py-4 px-5 text-foreground items-center gap-4 group"
             >
               <span className="text-sm uppercase tracking-[0.2em]">
-                Obtener acceso
+                Comenzar Ahora
               </span>
               <span className="w-12 h-[1px] bg-foreground/50 group-hover:w-20 transition-all duration-300" />
             </a>
