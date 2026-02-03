@@ -149,22 +149,25 @@ export default function DiaForYou() {
       </div>
 
       {/* Final CTA */}
-      <a href="#" className="w-full group">
+      <div className="w-full">
         <div
           ref={ctaRef}
-          className="bg-background group-hover:bg-foreground text-primary group-hover:text-background 
-          py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-all duration-300"
+          className="bg-background 
+          py-32 md:py-48  transition-all duration-300"
         >
-          <div className="flex justify-center text-center">
-            <span
-              className="font-serif "
-              style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+          <div className="flex  justify-center text-center">
+            <a
+              href="#"
+              className="inline-flex bg-primary py-4 px-5 text-background items-center gap-4 group"
             >
-              Comenzar ahora
-            </span>
+              <span className="uppercase text-2xl md:text-4xl uppercase tracking-[0.2em]">
+                Comenzar ahora
+              </span>
+              <span className="w-12 h-[1px] bg-background/50 group-hover:w-20 transition-all duration-300" />
+            </a>
           </div>
         </div>
-      </a>
+      </div>
     </section>
   );
 }
